@@ -5,8 +5,7 @@ public class ActionFactory {
     private static final String BUY_ACTION = "1";
     private static final String REFILL_ACTION = "2";
     private static final String REMAINING_ACTION = "3";
-    private static final String TAKE_MONEY_ACTION = "4";
-    private static final String EXIT_ACTION = "5";
+    private static final String EXIT_ACTION = "4";
     private UserInputProvider userInputProvider;
     private CoffeeMachine coffeeMachine;
 

@@ -9,7 +9,7 @@ public class CoffeeMachine {
     private UserInputProvider userInputProvider;
     private BigDecimal cashInTheMachine = new BigDecimal(0);
     ActionFactory actionFactory;
-    HashMap<MachineResource, Integer> coffeeMachineResourcesMap = new HashMap<>();
+    Map<MachineResource, Integer> coffeeMachineResourcesMap = new HashMap<>();
 
 
     public CoffeeMachine(UserInputProvider userInputProvider) {
@@ -19,7 +19,7 @@ public class CoffeeMachine {
 
     }
 
-    CoffeeType buyCoffe(CoffeeType coffeType) throws Exception {
+    CoffeeType buyCoffe(CoffeeType coffeType) {
         if (checkIfItsEnoughResources(coffeType)) {
             removeResources(coffeType);
         }
@@ -65,6 +65,9 @@ public class CoffeeMachine {
     }
 
     public void addMoney(BigDecimal paid) {
-        this.cashInTheMachine.add(paid);
+        cashInTheMachine = cashInTheMachine.add(paid);
+    }
+    public void showMoney(){
+        System.out.println("Now we have: " + this.cashInTheMachine + "$");
     }
 }

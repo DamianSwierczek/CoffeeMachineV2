@@ -11,7 +11,7 @@ public class UserInputProvider {
     }
 
     public String provideInput(){
-        return scanner.nextLine();
+        return scanner.next();
     }
     public Integer provideIntInput(){
         return scanner.nextInt();

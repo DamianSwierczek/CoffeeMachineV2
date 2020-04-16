@@ -15,5 +15,6 @@ public class DisplayRemainingAction implements Action {
         for (Map.Entry<MachineResource, Integer> entry : coffeeMachine.coffeeMachineResourcesMap.entrySet()) {
             System.out.println("Now we have " + entry.getValue() + " " + entry.getKey().name());
         }
+        coffeeMachine.showMoney();
     }
 }
