@@ -1,5 +1,7 @@
 package coffeemachine;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.math.BigDecimal;
 
 public class BuyAction implements Action {
@@ -14,16 +16,13 @@ public class BuyAction implements Action {
 
     @Override
     public void performAction() {
-        System.out.println("Which coffee would you like to buy? ESPRESSO, LATTE");
+        System.out.println("Which coffee would you like to buy? \nESPRESSO \nLATTE");
         CoffeeType coffeType = chooseCoffee(userInputProvider.provideInput().toUpperCase());
-        System.out.println("Pay for coffee: " + coffeType.cost + "$");
-        BigDecimal paid = new BigDecimal(userInputProvider.provideIntInput());
-        coffeeMachine.addMoney(paid);
-        System.out.println(coffeeMachine.buyCoffe(coffeType));
-
+        coffeeMachine.buyCoffe(coffeType);
     }
 
     private CoffeeType chooseCoffee(String input) {
         return CoffeeType.valueOf(input);
     }
+
 }

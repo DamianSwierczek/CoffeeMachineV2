@@ -25,6 +25,9 @@ public class ActionFactory {
             case REMAINING_ACTION:
                 return new DisplayRemainingAction(coffeeMachine);
 
+            case EXIT_ACTION:
+                System.exit(0);
+
             default:
                 return new UnknownAction();
 

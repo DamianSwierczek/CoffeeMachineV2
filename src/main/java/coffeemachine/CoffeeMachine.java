@@ -22,6 +22,7 @@ public class CoffeeMachine {
     CoffeeType buyCoffe(CoffeeType coffeType) {
         if (checkIfItsEnoughResources(coffeType)) {
             removeResources(coffeType);
+            payForCoffee(coffeType);
         }
         return coffeType;
     }
@@ -50,7 +51,8 @@ public class CoffeeMachine {
     private boolean checkIfItsEnoughResources(CoffeeType coffeeType) {
         boolean isEnough = true;
         for (Map.Entry<MachineResource, Integer> entry : coffeeType.resourceOfCoffeesMap.entrySet()) {
-            if (coffeeMachineResourcesMap.get(entry.getKey()) < entry.getValue()){
+            if (coffeeMachineResourcesMap.get(entry.getKey()) < entry.getValue()) {
+                System.out.println("Not enough: " + entry.getKey());
                 isEnough = false;
             }
         }
@@ -59,7 +61,7 @@ public class CoffeeMachine {
 
     public void run() {
         while (true) {
-            System.out.println("Pick action: 1 - Buy, 2 - Refill, 3 - Show current resources");
+            System.out.println("Pick action: 1 - Buy, 2 - Refill, 3 - Show current resources, 4 - Exit");
             performAction(actionFactory.getAction(userInputProvider.provideInput()));
         }
     }
@@ -67,7 +69,15 @@ public class CoffeeMachine {
     public void addMoney(BigDecimal paid) {
         cashInTheMachine = cashInTheMachine.add(paid);
     }
-    public void showMoney(){
+
+    public void showMoney() {
         System.out.println("Now we have: " + this.cashInTheMachine + "$");
+    }
+
+    private CoffeeType payForCoffee(CoffeeType coffeeType) {
+        System.out.println("Pay for coffee: " + coffeeType.cost + "$");
+        BigDecimal paid = new BigDecimal(userInputProvider.provideIntInput());
+        addMoney(paid);
+        return coffeeType;
     }
 }
