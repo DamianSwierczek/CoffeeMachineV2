@@ -10,10 +10,11 @@ public class UserInputProvider {
         this.scanner = scanner;
     }
 
-    public String provideInput(){
+    public String provideInput() {
         return scanner.next();
     }
-    public Integer provideIntInput(){
+
+    public Integer provideIntInput() {
         return scanner.nextInt();
     }
 }

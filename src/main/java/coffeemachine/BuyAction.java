@@ -1,9 +1,5 @@
 package coffeemachine;
 
-import org.w3c.dom.ls.LSOutput;
-
-import java.math.BigDecimal;
-
 public class BuyAction implements Action {
 
     private final CoffeeMachine coffeeMachine;

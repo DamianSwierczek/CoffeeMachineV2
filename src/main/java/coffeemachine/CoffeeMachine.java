@@ -21,8 +21,8 @@ public class CoffeeMachine {
 
     CoffeeType buyCoffe(CoffeeType coffeType) {
         if (checkIfItsEnoughResources(coffeType)) {
-            removeResources(coffeType);
             payForCoffee(coffeType);
+            removeResources(coffeType);
         }
         return coffeType;
     }
@@ -66,7 +66,7 @@ public class CoffeeMachine {
         }
     }
 
-    public void addMoney(BigDecimal paid) {
+    private void addMoney(BigDecimal paid) {
         cashInTheMachine = cashInTheMachine.add(paid);
     }
 
@@ -77,7 +77,30 @@ public class CoffeeMachine {
     private CoffeeType payForCoffee(CoffeeType coffeeType) {
         System.out.println("Pay for coffee: " + coffeeType.cost + "$");
         BigDecimal paid = new BigDecimal(userInputProvider.provideIntInput());
-        addMoney(paid);
+        if (checkIfItsEnoughMoney(paid, coffeeType)) {
+            addMoney(paid);
+        }
         return coffeeType;
     }
+
+    private boolean checkIfItsEnoughMoney(BigDecimal paid, CoffeeType coffeeType) {
+        boolean isEnough = true;
+        int comparison = paid.compareTo(coffeeType.cost);
+        switch (comparison) {
+            case 0:
+                System.out.println("No change for you");
+                break;
+            case 1:
+                BigDecimal substraction = new BigDecimal(0);
+                substraction = paid.subtract(coffeeType.cost);
+                System.out.print("Here's your change:" + substraction);
+                break;
+            case -1:
+                System.out.println("Not enough money, try again");
+                isEnough = false;
+                break;
+        }
+        return isEnough;
+    }
+
 }

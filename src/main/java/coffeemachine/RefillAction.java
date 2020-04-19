@@ -12,7 +12,7 @@ public class RefillAction implements Action {
 
     @Override
     public void performAction() {
-        System.out.println("What you want to refill? Water, Milk, or Beans ?");
+        System.out.println("What you want to refill? \nWater \nMilk \nBeans ?");
         String input = userInputProvider.provideInput().toUpperCase();
         System.out.println("How much?");
         int quantity = userInputProvider.provideIntInput();

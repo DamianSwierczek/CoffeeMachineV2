@@ -20,7 +20,7 @@ public class ActionFactory {
                 return new BuyAction(coffeeMachine, userInputProvider);
 
             case REFILL_ACTION:
-                return new RefillAction(coffeeMachine,userInputProvider);
+                return new RefillAction(coffeeMachine, userInputProvider);
 
             case REMAINING_ACTION:
                 return new DisplayRemainingAction(coffeeMachine);
