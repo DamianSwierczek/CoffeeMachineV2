@@ -8,6 +8,7 @@ public class CoffeeMachine {
 
     private UserInputProvider userInputProvider;
     private BigDecimal cashInTheMachine = new BigDecimal(0);
+    BigDecimal paid;
     ActionFactory actionFactory;
     Map<MachineResource, Integer> coffeeMachineResourcesMap = new HashMap<>();
 
@@ -20,8 +21,9 @@ public class CoffeeMachine {
     }
 
     CoffeeType buyCoffe(CoffeeType coffeType) {
-        if (checkIfItsEnoughResources(coffeType)) {
-            payForCoffee(coffeType);
+        payForCoffee(coffeType);
+        if (checkIfItsEnoughResources(coffeType) && checkIfItsEnoughMoney(paid,coffeType)) {
+            addMoney(paid);
             removeResources(coffeType);
         }
         return coffeType;
@@ -76,10 +78,7 @@ public class CoffeeMachine {
 
     private CoffeeType payForCoffee(CoffeeType coffeeType) {
         System.out.println("Pay for coffee: " + coffeeType.cost + "$");
-        BigDecimal paid = new BigDecimal(userInputProvider.provideIntInput());
-        if (checkIfItsEnoughMoney(paid, coffeeType)) {
-            addMoney(paid);
-        }
+        paid = new BigDecimal(userInputProvider.provideIntInput());
         return coffeeType;
     }
 
@@ -88,12 +87,12 @@ public class CoffeeMachine {
         int comparison = paid.compareTo(coffeeType.cost);
         switch (comparison) {
             case 0:
-                System.out.println("No change for you");
+                System.out.println("No change for you \nPreparing: " + coffeeType);
                 break;
             case 1:
                 BigDecimal substraction = new BigDecimal(0);
                 substraction = paid.subtract(coffeeType.cost);
-                System.out.print("Here's your change:" + substraction);
+                System.out.print("Here's your change:" + substraction + "\nPreparing: " + coffeeType);
                 break;
             case -1:
                 System.out.println("Not enough money, try again");
