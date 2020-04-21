@@ -63,7 +63,7 @@ public class CoffeeMachine {
 
     public void run() {
         while (true) {
-            System.out.println("Pick action: 1 - Buy, 2 - Refill, 3 - Show current resources, 4 - Exit");
+            System.out.println("Pick action: \n1 - Buy \n2 - Refill \n3 - Show current resources \n4 - Exit");
             performAction(actionFactory.getAction(userInputProvider.provideInput()));
         }
     }
@@ -92,7 +92,8 @@ public class CoffeeMachine {
             case 1:
                 BigDecimal substraction = new BigDecimal(0);
                 substraction = paid.subtract(coffeeType.cost);
-                System.out.print("Here's your change:" + substraction + "\nPreparing: " + coffeeType);
+                this.paid = coffeeType.cost;
+                System.out.print("Here's your change: " + substraction + "$\nPreparing: " + coffeeType + "\n");
                 break;
             case -1:
                 System.out.println("Not enough money, try again");

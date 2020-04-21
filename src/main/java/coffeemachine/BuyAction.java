@@ -13,8 +13,14 @@ public class BuyAction implements Action {
     @Override
     public void performAction() {
         System.out.println("Which coffee would you like to buy? \nESPRESSO \nLATTE");
-        String input = userInputProvider.provideInput().toUpperCase();
-        coffeeMachine.buyCoffe(CoffeeType.valueOf(input));
+        try {
+            String input = userInputProvider.provideInput().toUpperCase();
+            coffeeMachine.buyCoffe(CoffeeType.valueOf(input));
+        } catch(IllegalArgumentException e){
+            System.out.println("Wrong choice");
+        }
+
     }
+
 
 }

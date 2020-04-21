@@ -1,5 +1,7 @@
 package coffeemachine;
 
+import java.util.InputMismatchException;
+
 public class RefillAction implements Action {
 
     CoffeeMachine coffeeMachine;
@@ -12,10 +14,15 @@ public class RefillAction implements Action {
 
     @Override
     public void performAction() {
-        System.out.println("What you want to refill? \nWater \nMilk \nBeans ?");
+        System.out.println("What you want to refill? \nWater \nMilk \nBeans");
         String input = userInputProvider.provideInput().toUpperCase();
         System.out.println("How much?");
-        int quantity = userInputProvider.provideIntInput();
-        coffeeMachine.refill(MachineResource.valueOf(input), quantity);
+        try {
+            int quantity = userInputProvider.provideIntInput();
+            coffeeMachine.refill(MachineResource.valueOf(input), quantity);
+        } catch (InputMismatchException e){
+            System.out.println("We need some numbers here");
+        }
     }
+
 }
