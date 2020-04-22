@@ -16,10 +16,13 @@ public class RefillAction implements Action {
     public void performAction() {
         System.out.println("What you want to refill? \nWater \nMilk \nBeans");
         String input = userInputProvider.provideInput().toUpperCase();
-        System.out.println("How much?");
         try {
+            MachineResource.valueOf(input);
+            System.out.println("How much?");
             int quantity = userInputProvider.provideIntInput();
             coffeeMachine.refill(MachineResource.valueOf(input), quantity);
+        } catch (IllegalArgumentException e){
+            System.out.println("Wrong resource, try again");
         } catch (InputMismatchException e){
             System.out.println("We need some numbers here");
         }

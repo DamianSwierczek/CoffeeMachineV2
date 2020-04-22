@@ -26,6 +26,7 @@ public class ActionFactory {
                 return new DisplayRemainingAction(coffeeMachine);
 
             case EXIT_ACTION:
+                System.out.println("Goodbye");
                 System.exit(0);
 
             default:

@@ -34,7 +34,7 @@ public class CoffeeMachine {
     }
 
 
-    public void initResources() {
+    private void initResources() {
         coffeeMachineResourcesMap.put(MachineResource.MILK, 500);
         coffeeMachineResourcesMap.put(MachineResource.WATER, 500);
         coffeeMachineResourcesMap.put(MachineResource.BEANS, 100);
