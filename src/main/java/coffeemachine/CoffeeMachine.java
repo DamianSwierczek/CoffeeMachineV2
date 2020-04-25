@@ -22,7 +22,7 @@ public class CoffeeMachine {
 
     CoffeeType buyCoffe(CoffeeType coffeType) {
         payForCoffee(coffeType);
-        if (checkIfItsEnoughResources(coffeType) && checkIfItsEnoughMoney(paid,coffeType)) {
+        if (checkIfItsEnoughResources(coffeType) && checkIfItsEnoughMoney(paid, coffeType)) {
             addMoney(paid);
             removeResources(coffeType);
         }
