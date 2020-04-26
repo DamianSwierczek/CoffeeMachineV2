@@ -1,4 +1,7 @@
-package coffeemachine;
+package coffeemachine.Action;
+
+import coffeemachine.CoffeeMachine;
+import coffeemachine.MachineResource;
 
 import java.util.Map;
 

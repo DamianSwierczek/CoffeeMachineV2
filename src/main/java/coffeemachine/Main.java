@@ -1,6 +1,8 @@
 package coffeemachine;
 
 
+import coffeemachine.InputProvider.UserInputProvider;
+
 import java.util.Scanner;
 
 public class Main {

@@ -1,4 +1,8 @@
-package coffeemachine;
+package coffeemachine.Action;
+
+import coffeemachine.CoffeeMachine;
+import coffeemachine.InputProvider.UserInputProvider;
+import coffeemachine.MachineResource;
 
 import java.util.InputMismatchException;
 

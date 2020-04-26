@@ -1,4 +1,8 @@
-package coffeemachine;
+package coffeemachine.Action;
+
+import coffeemachine.CoffeeMachine;
+import coffeemachine.CoffeeType;
+import coffeemachine.InputProvider.UserInputProvider;
 
 public class BuyAction implements Action {
 

@@ -1,4 +1,7 @@
-package coffeemachine;
+package coffeemachine.Action;
+
+import coffeemachine.CoffeeMachine;
+import coffeemachine.InputProvider.UserInputProvider;
 
 public class ActionFactory {
 

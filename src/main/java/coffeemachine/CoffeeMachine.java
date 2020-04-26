@@ -1,5 +1,9 @@
 package coffeemachine;
 
+import coffeemachine.Action.Action;
+import coffeemachine.Action.ActionFactory;
+import coffeemachine.InputProvider.UserInputProvider;
+
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +14,7 @@ public class CoffeeMachine {
     private BigDecimal cashInTheMachine = new BigDecimal(0);
     BigDecimal paid;
     ActionFactory actionFactory;
-    Map<MachineResource, Integer> coffeeMachineResourcesMap = new HashMap<>();
+    public Map<MachineResource, Integer> coffeeMachineResourcesMap = new HashMap<>();
 
 
     public CoffeeMachine(UserInputProvider userInputProvider) {
@@ -20,7 +24,7 @@ public class CoffeeMachine {
 
     }
 
-    CoffeeType buyCoffe(CoffeeType coffeType) {
+    public CoffeeType buyCoffe(CoffeeType coffeType) {
         payForCoffee(coffeType);
         if (checkIfItsEnoughResources(coffeType) && checkIfItsEnoughMoney(paid, coffeType)) {
             addMoney(paid);

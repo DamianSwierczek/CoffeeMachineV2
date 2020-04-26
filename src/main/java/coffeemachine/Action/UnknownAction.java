@@ -1,4 +1,4 @@
-package coffeemachine;
+package coffeemachine.Action;
 
 public class UnknownAction implements Action {
 

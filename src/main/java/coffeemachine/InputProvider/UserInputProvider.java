@@ -1,4 +1,4 @@
-package coffeemachine;
+package coffeemachine.InputProvider;
 
 import java.util.Scanner;
 

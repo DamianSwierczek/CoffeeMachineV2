@@ -1,5 +1,6 @@
 package coffeemachine;
 
+import coffeemachine.InputProvider.UserInputProvider;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
