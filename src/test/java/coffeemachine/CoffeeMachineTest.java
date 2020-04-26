@@ -164,4 +164,58 @@ class CoffeeMachineTest {
         }
     }
 
+    @Test
+    public void testIfYouCanRefillMilk() {
+        System.out.println("Test 10");
+        String amountToRefill = "100\n";
+        String refillAction = "2\n";
+        String refillType = "MILK\n";
+
+        System.setIn(new ByteArrayInputStream((refillAction + refillType + amountToRefill).getBytes()));
+        UserInputProvider userInputProvider = new UserInputProvider(new Scanner(System.in));
+        CoffeeMachine coffeeMachine = new CoffeeMachine(userInputProvider);
+        try {
+            coffeeMachine.run();
+        } catch (NoSuchElementException e) {
+            int milkValueAfterRefill = coffeeMachine.coffeeMachineResourcesMap.get(MachineResource.MILK);
+            Assert.assertEquals(600, milkValueAfterRefill);
+        }
+    }
+
+    @Test
+    public void testIfYouCanRefillWater() {
+        System.out.println("Test 11");
+        String amountToRefill = "100\n";
+        String refillAction = "2\n";
+        String refillType = "WATER\n";
+
+        System.setIn(new ByteArrayInputStream((refillAction + refillType + amountToRefill).getBytes()));
+        UserInputProvider userInputProvider = new UserInputProvider(new Scanner(System.in));
+        CoffeeMachine coffeeMachine = new CoffeeMachine(userInputProvider);
+        try {
+            coffeeMachine.run();
+        } catch (NoSuchElementException e) {
+            int waterValueAfterRefill = coffeeMachine.coffeeMachineResourcesMap.get(MachineResource.WATER);
+            Assert.assertEquals(600, waterValueAfterRefill);
+        }
+    }
+
+    @Test
+    public void testIfYouCanRefillBeans() {
+        System.out.println("Test 12");
+        String amountToRefill = "10\n";
+        String refillAction = "2\n";
+        String refillType = "BEANS\n";
+
+        System.setIn(new ByteArrayInputStream((refillAction + refillType + amountToRefill).getBytes()));
+        UserInputProvider userInputProvider = new UserInputProvider(new Scanner(System.in));
+        CoffeeMachine coffeeMachine = new CoffeeMachine(userInputProvider);
+        try {
+            coffeeMachine.run();
+        } catch (NoSuchElementException e) {
+            int beansValueAfterRefill = coffeeMachine.coffeeMachineResourcesMap.get(MachineResource.BEANS);
+            Assert.assertEquals(110, beansValueAfterRefill);
+        }
+    }
+
 }
